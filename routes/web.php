@@ -28,9 +28,9 @@ Route::get('/profil/{Rahma?}', function (string $nama = 'Tamu') {
 // ============================================================
 // CONTOH 4: Route dengan nama (named route)
 // ============================================================
-Route::get('/tentang-kami', function () {
-    return view('tentang');
-})->name('tentang');
+// Route::get('/tentang-kami', function () {
+//     return view('tentang');
+// })->name('tentang');
  
 // ============================================================
 // CONTOH 5: Route yang mengembalikan JSON
@@ -140,6 +140,7 @@ Route::get('/blade-latihan', function () {
     ));
 });
 
+
 Route::get('/', function () {
     return view('home');
 });
@@ -155,3 +156,32 @@ Route::get('/kontak', function () {
 Route::get('/mulai', function () {
     return 'Mulai Belajar Laravel';
 });
+ 
+// Halaman Beranda
+Route::get('/', function () {
+    $fitur = [
+        ['icon' => '🚀', 'judul' => 'MVC Architecture', 'desc' => 'Struktur kode yang rapi dan terorganisir'],
+        ['icon' => '🗄️', 'judul' => 'Eloquent ORM',     'desc' => 'Akses database dengan cara yang elegan'],
+        ['icon' => '🎨', 'judul' => 'Blade Template',   'desc' => 'Template engine yang powerful dan fleksibel'],
+        ['icon' => '🔐', 'judul' => 'Security',         'desc' => 'Fitur keamanan bawaan yang komprehensif'],
+        ['icon' => '⚡', 'judul' => 'Artisan CLI',      'desc' => 'Command line tool untuk produktivitas'],
+        ['icon' => '📦', 'judul' => 'Package Ecosystem', 'desc' => 'Ribuan paket siap pakai dari Composer'],
+    ];
+    return view('pages.home', compact('fitur'));
+})->name('home');
+ 
+// Halaman Tentang
+Route::get('/tentang', function () {
+    $tim = [
+        ['nama' => 'Dina Budhi Utami, M.T.', 'peran' => 'Dosen Pengampu', 'foto' => null],
+        ['nama' => 'Firayza',          'peran' => 'Asisten Lab',    'foto' => null],
+        ['nama' => 'Fahmy',           'peran' => 'Asisten Lab',    'foto' => null],
+    ];
+    return view('pages.tentang', compact('tim'));
+})->name('tentang');
+ 
+// Halaman Kontak
+Route::get('/kontak', function () {
+    return view('pages.kontak');
+})->name('kontak');
+

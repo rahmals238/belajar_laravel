@@ -8,6 +8,11 @@
  
 {{-- @section('content') mengisi slot @yield('content') di layout --}}
 @section('content')
+        <x-alert type="success" message="Selamat datang di Laravel 13!" />
+        <x-alert type="warning" message="Ini adalah latihan Blade Component." />
+        <x-alert type="danger" message="Contoh alert error Bootstrap." />
+
+
     {{-- Jumbotron / Hero Section --}}
     <div class="p-5 mb-4 bg-dark text-white rounded-3">
         <div class="container-fluid py-3">
@@ -24,41 +29,22 @@
  
     {{-- Fitur Cards --}}
     <div class="row g-4">
+    @foreach($fitur as $item)
         <div class="col-md-4">
             <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">🚀 MVC Architecture</h5>
-                    <p class="card-text">
-                        Pelajari konsep Model-View-Controller yang terstruktur
+                    <h5 class="card-title">
+                        {{ $item['icon'] }} {{ $item['judul'] }}
+                    </h5>
 
-                        dan modular untuk pengembangan aplikasi yang scalable.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">🗄️ Eloquent ORM</h5>
                     <p class="card-text">
-                        Berinteraksi dengan database menggunakan Eloquent ORM
-                        yang intuitif dan powerful tanpa menulis SQL manual.
+                        {{ $item['desc'] }}
                     </p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body">
-                    <h5 class="card-title">🎨 Blade Template</h5>
-                    <p class="card-text">
-                        Gunakan Blade Template Engine untuk membuat tampilan
-                        web yang dinamis dan reusable dengan sintaks yang bersih.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    @endforeach
+</div>
 @endsection
 
 {{-- Menambahkan CSS tambahan khusus untuk halaman ini --}}
